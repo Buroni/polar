@@ -45,7 +45,7 @@ The response object returned by the most recent poll.
 An object containing actions which allow the user to stop the poll process
 or update the initial poll parameters from within `onPoll`. These are `actions.stop` and `actions.updateOptions`, respectively.
 
-For example, the following stops the poll process if there's
+For example, the following polls until there's
 a `completed` property in the response body:
 
 ```js
