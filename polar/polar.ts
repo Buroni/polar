@@ -1,21 +1,36 @@
-import { PolarOptions } from "./types";
+import { PolarActions, PolarOptions, PolarProperties } from "./types";
 
 const defaultOptions: Partial<PolarOptions> = {
     delay: 2000,
-    onPoll: (response, stop) => {},
+    onPoll: (response, actions, properties) => {},
     continueOnError: false
 };
 
 class Polar {
 
-    options: PolarOptions;
-    stopPoll = false;
-    count = 0;
-    error = null;
+    private options: PolarOptions;
+    private stopPoll = false;
+    private count = 0;
+    private error = null;
+
+    private get properties(): PolarProperties {
+        return {
+            count: this.count,
+            error: this.error
+        };
+    }
+
+    private get actions(): PolarActions {
+        return {
+            stop: this.stop,
+            updateOptions: this.updateOptions
+        }
+    }
 
     public constructor(options: PolarOptions) {
         this.options = {...defaultOptions, ...options};
         this.stop = this.stop.bind(this);
+        this.updateOptions = this.updateOptions.bind(this);
     }
 
 
@@ -40,8 +55,12 @@ class Polar {
         return this.options.limit && (this.count === this.options.limit);
     }
 
+    private updateOptions(patch: Partial<PolarOptions>) {
+        this.options = {...this.options, ...patch};
+    }
+
     private onPoll(request: any) {
-        this.options.onPoll(request, this.stop, this.error);
+        this.options.onPoll(request, this.actions, this.properties);
     }
 
     private pollWithDelay(): Promise<any> {
