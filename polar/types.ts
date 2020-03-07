@@ -11,7 +11,9 @@ export type PolarActions = {
 export type PolarOptions = {
     request: () => Promise<any>;
     delay?: number;
-    onPoll?: (response: any, actions: PolarActions, properties: PolarProperties) => void
+    beforePoll?: (actions: PolarActions, properties: PolarProperties) => void;
+    onPoll?: (response: any, actions: PolarActions, properties: PolarProperties) => void;
+    afterPoll?: (actions: PolarActions, properties: PolarProperties) => void;
     limit?: number;
     continueOnError: boolean;
 };
