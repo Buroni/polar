@@ -1,10 +1,10 @@
 const Polar = require("../polar/polar");
 
-describe("Polling with limit", () => {
-  test("The poll should exit after 3 requests", () => {
+describe("Testing properties", () => {
+  test("Limit: the poll should exit after 3 requests", () => {
     let count = 0;
     return new Polar({
-        request: () => Promise.resolve(),
+        request: jest.fn(() => Promise.resolve()),
         limit: 3,
         delay: 100,
         onPoll: () => (count++)

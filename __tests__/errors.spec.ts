@@ -6,7 +6,7 @@ const errMsg = "stubbed err";
 describe("Polling with errors", () => {
     test("The poll should exit on the request error", () => {
         const p = new Polar({
-            request: () => Promise.reject(errMsg)
+            request: jest.fn(() => Promise.reject(errMsg))
         });
         expect(p.start()).rejects.toMatch(errMsg);
     });
