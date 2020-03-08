@@ -1,13 +1,20 @@
 {
-  "name": "polar",
-  "version": "1.0.0",
-  "description": "",
+  "name": "js-polar",
+  "version": "0.0.2",
+  "description": "A tiny flexible Javascript polling library.",
+  "keywords": [
+    "javascript",
+    "poll",
+    "polling",
+    "poller",
+    "polar"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jake Reid Browning",
+  "license": "MIT",
   "dependencies": {
     "@types/es6-promise": "^3.3.0",
     "@types/node": "^13.9.0",

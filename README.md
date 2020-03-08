@@ -1,8 +1,14 @@
 # polar
  A tiny flexible JS polling library.
  
+## Installation
+
+`npm install js-polar`
+
+## Getting Started
+ 
  ```js
-const Polar = require("polar-js")
+const Polar = require("js-polar")
 
 const polar = new Polar({
     delay: 1000,
