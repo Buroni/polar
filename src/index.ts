@@ -38,7 +38,13 @@ export class Polar {
 
     public async start(): Promise<any> {
         // In case stop was called by the afterPoll hook
-        if (this.stopPoll) return Promise.resolve();
+        if (this.stopPoll) return;
+        let afterCalled = false;
+
+        const setAfter = () => {
+            !afterCalled && this.afterPoll();
+            afterCalled = true;
+        }
 
         try {
             this.beforePoll();
@@ -47,21 +53,21 @@ export class Polar {
             const r = await this.options.request();
             this.onPoll(r);
             if (this.stopPoll || this.limitReached()) {
-                this.afterPoll();
+                setAfter();
                 return r;
             } else {
-                this.afterPoll();
+                setAfter();
                 return await this.pollWithDelay();
             }
         } catch(e) {
             this.error = e;
-            this.afterPoll();
+            setAfter();
             if (this.options.continueOnError && !this.limitReached() && !this.stopPoll) {
                 return await this.pollWithDelay();
             } else if (!this.options.continueOnError) {
-                return Promise.reject(e);
+                throw e;
             } else {
-                return Promise.resolve();
+                return;
             }
         }
     }
@@ -93,8 +99,12 @@ export class Polar {
     private pollWithDelay(): Promise<any> {
         return new Promise((resolve, reject) => {
             setTimeout(async () => {
-                const a = await this.start();
-                return resolve(a);
+                try {
+                    const a = await this.start();
+                    return resolve(a);
+                } catch (e) {
+                    return this.options.continueOnError ? this.start() : reject(e);
+                }
             }, this.options.delay);
         });
     }
