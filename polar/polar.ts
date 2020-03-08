@@ -37,7 +37,9 @@ class Polar {
 
 
     public async start(): Promise<any> {
-        this.stopPoll = false;
+        // In case stop was called by the afterPoll hook
+        if (this.stopPoll) return Promise.resolve();
+
         try {
             this.beforePoll();
             this.error = null;
@@ -54,7 +56,7 @@ class Polar {
         } catch(e) {
             this.error = e;
             this.afterPoll();
-            if (this.options.continueOnError && !this.limitReached()) {
+            if (this.options.continueOnError && !this.limitReached() && !this.stopPoll) {
                 return await this.pollWithDelay();
             } else if (!this.options.continueOnError) {
                 return Promise.reject(e);
