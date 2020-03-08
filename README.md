@@ -23,7 +23,9 @@ polar.start()
 | Name       | Description  | Default
 | ------------- |:-------------|:------------- |
 | request      | The poll request. | None (required) |
-| onPoll | Function to execute after each poll. | () => {} |
+| beforePoll | Lifecycle function to execute before attempting each poll. | () => {} |
+| onPoll | Lifecycle function to execute upon each successful poll. | () => {} |
+| afterPoll | Lifecycle function to execute after attempting each poll. | () => {} |
 | delay      | Delay in ms between each poll. | 2000 |
 | limit      | Maximum number of polls before stopping. | null (no limit) |
 | continueOnError (*)      | Continue polling when an error response is received. | false |
@@ -34,7 +36,13 @@ via `properties.error` inside the `onPoll` function.
 
 ---
 
-### onPoll Parameters
+### Lifecycle Parameters
+
+Below are type definitions for lifecycle methods:
+
+`beforePoll: (response, actions, properties) => void`
+`onPoll: (response, actions, properties) => void`
+`afterPoll: (response, actions, properties) => void`
 
 #### response
 
@@ -60,7 +68,7 @@ new Polar({
 ```
 
 In the next example, the endpoint is polled five times with the
-delay being doubled each time.
+delay being doubled after each poll.
 
 ```js
 let delay = 1000;
@@ -69,7 +77,7 @@ new Polar({
     request: () => fetch("https://github.com"),
     delay,
     limit: 5,
-    onPoll: (response, actions, properties) => {
+    afterPoll: (actions, properties) => {
         delay *= 2;
         actions.updateProperties({ delay });
     }
