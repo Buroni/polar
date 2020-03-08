@@ -99,7 +99,12 @@ This object contains two values.
 `properties.count` gives 
 the number of requests in the lifetime of the polling process.
 
-`properties.error` contains the the error caught in the most recent poll,
+`properties.error` contains the the error caught in the previous poll attempt,
 defaulting to `null` if there are none. This value is useful if you've set
 `continueOnError` to `true` and still want to track errors, otherwise any errors
 can just be caught in a `catch` block chained to `Polar.start()`.
+
+<b>Note</b>: the `error` value returned inside `onPoll` also refers
+to the <i>previous</i> poll attempt. This is because `onPoll` isn't called
+on error. It may be better to restrict error handling to the `beforePoll` and `afterPoll`
+methods to avoid confusion.
