@@ -1,5 +1,5 @@
 # polar
- A tiny flexible JS polling library.
+ A tiny flexible JS polling library with typescript support.
  
 ## Installation
 
@@ -8,7 +8,7 @@
 ## Getting Started
  
  ```js
-const Polar = require("js-polar")
+import { Polar } from "js-polar";
 
 const polar = new Polar({
     delay: 1000,
