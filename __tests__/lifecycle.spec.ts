@@ -49,7 +49,7 @@ describe("Testing lifecycles", () => {
             },
         }).start().then(() => {
             expect(params.count).toEqual(2);
-            expect(params.errors[0]).toEqual(null);
+            expect(params.errors[0]).toEqual(errMsg);
             expect(params.errors.length).toEqual(1);
         });
     });

@@ -48,10 +48,10 @@ export class Polar {
 
         try {
             this.beforePoll();
-            this.error = null;
             this.count++;
             const r = await this.options.request();
             this.onPoll(r);
+            this.error = null;
             if (this.stopPoll || this.limitReached()) {
                 setAfter();
                 return r;

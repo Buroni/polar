@@ -38,7 +38,7 @@ polar.start()
 
 \* Note that if `continueOnError` is `true`, any `catch` block attached to the
 `polar.start()` call will not pick up errors. Instead, the error can be accessed
-via `properties.error` inside the `beforePoll` or `afterPoll` methods.
+via `properties.error` inside the lifecycle methods.
 
 ---
 
