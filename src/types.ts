@@ -15,5 +15,5 @@ export type PolarOptions = {
     onPoll?: (response: any, actions: PolarActions, properties: PolarProperties) => void;
     afterPoll?: (actions: PolarActions, properties: PolarProperties) => void;
     limit?: number;
-    continueOnError: boolean;
+    continueOnError?: boolean;
 };
