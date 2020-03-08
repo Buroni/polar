@@ -1,6 +1,6 @@
 {
   "name": "js-polar",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A tiny flexible Javascript polling library.",
   "keywords": [
     "javascript",
@@ -10,7 +10,7 @@
     "polar"
   ],
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc"
