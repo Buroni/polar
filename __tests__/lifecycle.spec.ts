@@ -9,7 +9,7 @@ const genParams = () => ({
 
 const requests = [
     jest.fn(() => Promise.reject(errMsg)),
-    jest.fn(() => Promise.resolve()),
+    jest.fn(() => Promise.resolve())
 ];
 
 describe("Testing lifecycles", () => {
@@ -24,13 +24,15 @@ describe("Testing lifecycles", () => {
                 params.count = p.count;
                 a.updateOptions({ request: requests[params.i++] });
                 if (p.count === 1) a.stop();
-            },
-        }).start().then(() => {
-            expect(params.count).toEqual(1);
-            expect(params.errors[0]).toEqual(null);
-            expect(params.errors[1]).toEqual(errMsg);
-            expect(params.errors.length).toEqual(2);
-        });
+            }
+        })
+            .start()
+            .then(() => {
+                expect(params.count).toEqual(1);
+                expect(params.errors[0]).toEqual(null);
+                expect(params.errors[1]).toEqual(errMsg);
+                expect(params.errors.length).toEqual(2);
+            });
     });
 
     test("onPoll", () => {
@@ -46,12 +48,14 @@ describe("Testing lifecycles", () => {
             },
             afterPoll: (a, p) => {
                 a.updateOptions({ request: requests[++params.i] });
-            },
-        }).start().then(() => {
-            expect(params.count).toEqual(2);
-            expect(params.errors[0]).toEqual(errMsg);
-            expect(params.errors.length).toEqual(1);
-        });
+            }
+        })
+            .start()
+            .then(() => {
+                expect(params.count).toEqual(2);
+                expect(params.errors[0]).toEqual(errMsg);
+                expect(params.errors.length).toEqual(1);
+            });
     });
 
     test("afterPoll", () => {
@@ -65,12 +69,14 @@ describe("Testing lifecycles", () => {
                 params.count = p.count;
                 a.updateOptions({ request: requests[++params.i] });
                 if (p.count === 2) a.stop();
-            },
-        }).start().then(() => {
-            expect(params.count).toEqual(2);
-            expect(params.errors[0]).toEqual(errMsg);
-            expect(params.errors[1]).toEqual(null);
-            expect(params.errors.length).toEqual(2);
-        });
+            }
+        })
+            .start()
+            .then(() => {
+                expect(params.count).toEqual(2);
+                expect(params.errors[0]).toEqual(errMsg);
+                expect(params.errors[1]).toEqual(null);
+                expect(params.errors.length).toEqual(2);
+            });
     });
 });

@@ -9,7 +9,6 @@ const defaultOptions: Partial<PolarOptions> = {
 };
 
 export class Polar {
-
     private options: PolarOptions;
     private stopPoll = false;
     private count = 0;
@@ -26,15 +25,14 @@ export class Polar {
         return {
             stop: this.stop,
             updateOptions: this.updateOptions
-        }
+        };
     }
 
     public constructor(options: PolarOptions) {
-        this.options = {...defaultOptions, ...options};
+        this.options = { ...defaultOptions, ...options };
         this.stop = this.stop.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
     }
-
 
     public async start(): Promise<any> {
         // In case stop was called by the afterPoll hook
@@ -44,7 +42,7 @@ export class Polar {
         const setAfter = () => {
             !afterCalled && this.afterPoll();
             afterCalled = true;
-        }
+        };
 
         try {
             this.beforePoll();
@@ -59,10 +57,14 @@ export class Polar {
                 setAfter();
                 return await this.pollWithDelay();
             }
-        } catch(e) {
+        } catch (e) {
             this.error = e;
             setAfter();
-            if (this.options.continueOnError && !this.limitReached() && !this.stopPoll) {
+            if (
+                this.options.continueOnError &&
+                !this.limitReached() &&
+                !this.stopPoll
+            ) {
                 return await this.pollWithDelay();
             } else if (!this.options.continueOnError) {
                 throw e;
@@ -77,11 +79,11 @@ export class Polar {
     }
 
     private limitReached(): boolean {
-        return this.options.limit && (this.count === this.options.limit);
+        return this.options.limit && this.count === this.options.limit;
     }
 
     private updateOptions(patch: Partial<PolarOptions>) {
-        this.options = {...this.options, ...patch};
+        this.options = { ...this.options, ...patch };
     }
 
     private onPoll(request: any) {
@@ -103,10 +105,11 @@ export class Polar {
                     const a = await this.start();
                     return resolve(a);
                 } catch (e) {
-                    return this.options.continueOnError ? this.start() : reject(e);
+                    return this.options.continueOnError
+                        ? this.start()
+                        : reject(e);
                 }
             }, this.options.delay);
         });
     }
 }
-

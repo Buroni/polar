@@ -1,5 +1,5 @@
 import { Polar } from "../src/index";
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
 const errMsg = "stubbed err";
 
@@ -24,11 +24,13 @@ describe("Polling with errors", () => {
             limit: 2,
             afterPoll: (actions, props) => {
                 errs.push(props.error);
-                actions.updateOptions({ request: requests[1] })
+                actions.updateOptions({ request: requests[1] });
             }
-        }).start().then(() => {
-            expect(errs[0]).toEqual(errMsg);
-            expect(errs[1]).toEqual(null);
-        });
+        })
+            .start()
+            .then(() => {
+                expect(errs[0]).toEqual(errMsg);
+                expect(errs[1]).toEqual(null);
+            });
     });
 });
