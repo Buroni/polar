@@ -1,6 +1,6 @@
 {
   "name": "js-polar",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "A tiny flexible Javascript polling library.",
   "keywords": [
     "javascript",
@@ -11,6 +11,9 @@
     "polar"
   ],
   "main": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
   "types": "index.d.ts",
   "scripts": {
     "test": "jest",
@@ -18,14 +21,12 @@
   },
   "author": "Jake Reid Browning",
   "license": "MIT",
-  "dependencies": {
-    "@types/node": "^13.9.0",
-    "typescript": "^3.8.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-typescript": "^7.8.3",
     "babel-jest": "^25.1.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "typescript": "^3.8.3"
   }
 }
