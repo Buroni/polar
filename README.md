@@ -87,7 +87,7 @@ new Polar({
     limit: 5,
     afterPoll: (actions, properties) => {
         delay *= 2;
-        actions.updateProperties({ delay });
+        actions.updateOptions({ delay });
     }
 }).start();
 ```
