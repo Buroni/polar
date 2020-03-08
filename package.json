@@ -1,6 +1,6 @@
 {
   "name": "js-polar",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A tiny flexible Javascript polling library with typescript support.",
   "homepage": "https://github.com/Buroni/polar",
   "keywords": [
