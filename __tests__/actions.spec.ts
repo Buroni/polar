@@ -1,5 +1,6 @@
 import { Polar } from "../src/index";
 
+
 describe("Testing actions", () => {
   test("The poll should exit on 'complete' response", () => {
     const requests = [
