@@ -46,9 +46,9 @@ via `properties.error` inside the lifecycle methods.
 
 Below are type definitions for lifecycle methods:
 
-`beforePoll: (response, actions, properties) => void`
+`onPoll: (response, actions, properties) => void`
 
-`onPoll: (actions, properties) => void`
+`beforePoll: (actions, properties) => void`
 
 `afterPoll: (actions, properties) => void`
 
