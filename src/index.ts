@@ -8,7 +8,7 @@ const defaultOptions: Partial<PolarOptions> = {
     continueOnError: false
 };
 
-export default class Polar {
+export class Polar {
 
     private options: PolarOptions;
     private stopPoll = false;

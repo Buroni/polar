@@ -1,4 +1,4 @@
-import Polar from "../src/index";
+import { Polar } from "../src/index";
 
 describe("Testing properties", () => {
   test("Limit: the poll should exit after 3 requests", () => {

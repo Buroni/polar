@@ -1,4 +1,4 @@
-import Polar from "../src/index";
+import { Polar } from "../src/index";
 import fetch from 'node-fetch';
 
 const errMsg = "stubbed err";
