@@ -1,5 +1,4 @@
-const Polar = require("../src/index");
-
+import Polar from "../src/index";
 const errMsg = "stubbed err";
 
 const genParams = () => ({

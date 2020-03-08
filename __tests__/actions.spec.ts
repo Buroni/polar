@@ -1,4 +1,4 @@
-const Polar = require("../src/index");
+import Polar from "../src/index";
 
 describe("Testing actions", () => {
   test("The poll should exit on 'complete' response", () => {

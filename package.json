@@ -1,9 +1,10 @@
 {
   "name": "js-polar",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A tiny flexible Javascript polling library.",
   "keywords": [
     "javascript",
+    "typescript",
     "poll",
     "polling",
     "poller",
