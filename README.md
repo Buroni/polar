@@ -23,9 +23,9 @@ polar.start()
 | Name       | Description  | Default
 | ------------- |:-------------|:------------- |
 | request      | The poll request. | None (required) |
-| beforePoll | Lifecycle function to execute before attempting each poll. | () => {} |
-| onPoll | Lifecycle function to execute upon each successful poll. | () => {} |
-| afterPoll | Lifecycle function to execute after attempting each poll. | () => {} |
+| beforePoll | Lifecycle method to execute before attempting each poll. | () => {} |
+| onPoll | Lifecycle method to execute upon each successful poll. | () => {} |
+| afterPoll | Lifecycle method to execute after attempting each poll. | () => {} |
 | delay      | Delay in ms between each poll. | 2000 |
 | limit      | Maximum number of polls before stopping. | null (no limit) |
 | continueOnError (*)      | Continue polling when an error response is received. | false |
