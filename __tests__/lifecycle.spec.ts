@@ -1,4 +1,4 @@
-const Polar = require("../polar/polar");
+const Polar = require("../src/index");
 
 const errMsg = "stubbed err";
 

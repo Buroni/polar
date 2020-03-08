@@ -1,4 +1,4 @@
-const Polar = require("../polar/polar");
+const Polar = require("../src/index");
 
 describe("Testing properties", () => {
   test("Limit: the poll should exit after 3 requests", () => {

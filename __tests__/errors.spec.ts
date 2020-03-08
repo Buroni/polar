@@ -1,4 +1,4 @@
-const Polar = require("../polar/polar");
+const Polar = require("../src/index");
 import fetch from 'node-fetch';
 
 const errMsg = "stubbed err";

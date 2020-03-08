@@ -1,4 +1,4 @@
-const Polar = require("../polar/polar");
+const Polar = require("../src/index");
 
 describe("Testing actions", () => {
   test("The poll should exit on 'complete' response", () => {

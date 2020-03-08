@@ -3,14 +3,17 @@
     "outDir": "./dist/",
     "sourceMap": false,
     "noImplicitAny": false,
-    "module": "esnext",
-    "target": "es2017"
+    "module": "system",
+    "target": "ES6",
+    "declaration": true,
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules",
+    "__tests__",
     "**/*.spec.ts"
   ]
 }
