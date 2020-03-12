@@ -1,16 +1,8 @@
 import { Polar } from "../src/index";
-import fetch from "node-fetch";
 
 const errMsg = "stubbed err";
 
 describe("Polling with errors", () => {
-    test("The poll should exit on the request error", () => {
-        const p = new Polar({
-            request: jest.fn(() => Promise.reject(errMsg))
-        });
-        expect(p.start()).rejects.toMatch(errMsg);
-    });
-
     test("The poll should continue on the request error", () => {
         const errs = [];
         const requests = [
