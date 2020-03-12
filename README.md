@@ -1,13 +1,14 @@
 # polar
- A tiny flexible JS polling library with typescript support.
- 
+
+A tiny flexible JS polling library with typescript support.
+
 ## Installation
 
 `npm install js-polar`
 
 ## Getting Started
- 
- ```js
+
+```js
 import { Polar } from "js-polar";
 
 const polar = new Polar({
@@ -18,23 +19,22 @@ const polar = new Polar({
     }
 });
 
-polar.start()
-    .catch(myHandleErrFunction)
+polar.start().catch(myHandleErrFunction);
 ```
 
 ---
 
 ### Constructor Options
 
-| Name       | Description  | Default
-| ------------- |:-------------|:------------- |
-| request      | The poll request. | None (required) |
-| beforePoll | Lifecycle method to execute before attempting each poll. | () => {} |
-| onPoll | Lifecycle method to execute upon each successful poll. | () => {} |
-| afterPoll | Lifecycle method to execute after attempting each poll. | () => {} |
-| delay      | Delay in ms between each poll. | 2000 |
-| limit      | Maximum number of polls before stopping. | null (no limit) |
-| continueOnError (*)      | Continue polling when an error response is received. | false |
+| Name                 | Description                                              | Default         |
+| -------------------- | :------------------------------------------------------- | :-------------- |
+| request              | The poll request.                                        | None (required) |
+| beforePoll           | Lifecycle method to execute before attempting each poll. | () => {}        |
+| onPoll               | Lifecycle method to execute upon each successful poll.   | () => {}        |
+| afterPoll            | Lifecycle method to execute after attempting each poll.  | () => {}        |
+| delay                | Delay in ms between each poll.                           | 2000            |
+| limit                | Maximum number of polls before stopping.                 | null (no limit) |
+| continueOnError (\*) | Continue polling when an error response is received.     | false           |
 
 \* Note that if `continueOnError` is `true`, any `catch` block attached to the
 `polar.start()` call will not pick up errors. Instead, the error can be accessed
@@ -94,9 +94,9 @@ new Polar({
 
 #### properties
 
-This object contains two values. 
+This object contains two values.
 
-`properties.count` gives 
+`properties.count` gives
 the number of requests in the lifetime of the polling process.
 
 `properties.error` contains the the error caught in the previous poll attempt,
@@ -108,3 +108,24 @@ can just be caught in a `catch` block chained to `Polar.start()`.
 to the <i>previous</i> poll attempt. This is because `onPoll` isn't called
 on error. It may be better to restrict error handling to the `beforePoll` and `afterPoll`
 methods to avoid confusion.
+
+---
+
+#### Stopping a poll from outside the process
+
+It's possible to stop a poll outside the poll process by calling
+`stop` on the poll instance.
+
+```js
+const p = new Polar({
+    request: () => fetch("https://api.mysite.me")
+});
+
+p.start();
+
+const anotherTask = () => {
+    // Code for some other task here.
+    // ...
+    p.stop();
+};
+```
