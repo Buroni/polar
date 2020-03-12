@@ -20,4 +20,5 @@ export type PolarOptions = {
     afterPoll?: (actions: PolarActions, properties: PolarProperties) => void;
     limit?: number;
     continueOnError?: boolean;
+    maxRetries?: number;
 };
