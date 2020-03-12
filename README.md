@@ -24,6 +24,8 @@ const polar = new Polar({
 polar.start().catch(myHandleErrFunction);
 ```
 
+If you don't want to use ES6 imports, you can use `const { Polar } = require("js-polar")`.
+
 ---
 
 ### Constructor Options
