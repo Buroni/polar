@@ -12,10 +12,12 @@ A tiny flexible JS polling library with typescript support.
 import { Polar } from "js-polar";
 
 const polar = new Polar({
-    delay: 1000,
     request: () => fetch("https://github.com"),
     onPoll: (response, actions, properties) => {
         // Handle polling logic
+        if (someCondition) {
+            actions.stop();
+        }
     }
 });
 
