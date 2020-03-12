@@ -14,8 +14,7 @@ import { Polar } from "js-polar";
 const polar = new Polar({
     request: () => fetch("https://github.com"),
     onPoll: (response, actions, properties) => {
-        // Handle polling logic
-        if (someCondition) {
+        if (response.body.completed) {
             actions.stop();
         }
     }
