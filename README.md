@@ -1,10 +1,6 @@
 # polar
 
-A tiny flexible JS polling library with typescript support.
-
-## Installation
-
-`npm install js-polar`
+Lifecycle-based JS polling library with typescript support.
 
 ## Getting Started
 
