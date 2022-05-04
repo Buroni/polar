@@ -5,8 +5,6 @@ Lifecycle-based JS polling library with typescript support.
 ## Getting Started
 
 ```js
-import { Polar } from "js-polar";
-
 const polar = new Polar({
     request: () => fetch("https://github.com"),
     onPoll: (response, actions, properties) => {
